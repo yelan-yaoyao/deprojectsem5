@@ -65,43 +65,6 @@ let messages = [
     { user: "Ahmed (General)", time: "8 mins ago", text: "Hi everyone! New to the platform. Excited to find work opportunities." }
 ];
 
-// Navigation
-function showPage(pageId) {
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
-
-    // Remove active class from nav links
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-    });
-
-    // Show selected page
-    document.getElementById(pageId).classList.add('active');
-
-    // Add active class to clicked nav link
-    event.target.classList.add('active');
-
-    // Load page-specific content
-    if (pageId === 'find-people') {
-        loadWorkers();
-    }
-}
-
-// Registration tabs
-function switchTab(tabType) {
-    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-    if (tabType === 'worker') {
-        document.querySelector('.tab:first-child').classList.add('active');
-        document.getElementById('worker-tab').classList.add('active');
-    } else {
-        document.querySelector('.tab:last-child').classList.add('active');
-        document.getElementById('employer-tab').classList.add('active');
-    }
-}
 
 // Load workers
 function loadWorkers() {
