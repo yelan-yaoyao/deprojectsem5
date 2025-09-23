@@ -1,204 +1,124 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Labor Connect - Find & Hire Workers</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Labor Connect - Connecting Employers with Reliable Workers</title>
+    <meta name="description" content="Find skilled and unskilled workers for your projects. Connect with trusted professionals in farming, construction, cleaning, and general labor.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo">Labor Connect</div>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="#" onclick="showPage('find-people')">Find People</a></li>
-                    <li><a href="#" onclick="showPage('connections')">Connections</a></li>
-                    <li><a href="#" onclick="showPage('chat')">Global Chat</a></li>
-                    <li><a href="#" onclick="showPage('about')">About Us</a></li>
-                    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="#" onclick="showPage('register')">Register</a></li>
-                </ul>
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navigation" class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/" class="brand-link" data-testid="link-home">
+                    <div class="brand-icon">
+                        <i data-lucide="handshake"></i>
+                    </div>
+                    <span class="brand-text">Labor Connect</span>
+                </a>
             </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="nav-menu">
+                <a href="/" class="nav-link" data-testid="link-home">Home</a>
+                <a href="/find-people" class="nav-link" data-testid="link-find-people">Find People</a>
+                <a href="/connections" class="nav-link" data-testid="link-connections">Connections</a>
+                <a href="/chat" class="nav-link" data-testid="link-global-chat">Global Chat</a>
+                <a href="/about" class="nav-link" data-testid="link-about-us">About Us</a>
+                <a href="/contact" class="nav-link" data-testid="link-contact">Contact</a>
+            </div>
+            
+            <!-- Auth Section -->
+            <div class="nav-auth">
+                <div id="auth-section">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn" data-testid="button-mobile-menu">
+                <i data-lucide="menu"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <div class="hero">
-            <div class="container">
-                <h1>Connect Workers with Opportunities</h1>
-                <p>The premier platform for labor hiring and job seeking across farming, construction, cleaning, and general work</p>
-                <div class="cta-buttons">
-                    <a href="#" onclick="showPage('register')" class="btn btn-primary">Get Started</a>
-                    <a href="#" onclick="showPage('find-people')" class="btn btn-secondary">Find Workers</a>
-                </div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <span class="brand-text">Labor Connect</span>
+                <button class="mobile-menu-close" id="mobile-menu-close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-links">
+                <a href="/" class="mobile-nav-link" data-testid="link-mobile-home">Home</a>
+                <a href="/find-people" class="mobile-nav-link" data-testid="link-mobile-find-people">Find People</a>
+                <a href="/connections" class="mobile-nav-link" data-testid="link-mobile-connections">Connections</a>
+                <a href="/chat" class="mobile-nav-link" data-testid="link-mobile-global-chat">Global Chat</a>
+                <a href="/about" class="mobile-nav-link" data-testid="link-mobile-about-us">About Us</a>
+                <a href="/contact" class="mobile-nav-link" data-testid="link-mobile-contact">Contact</a>
+            </div>
+            <div id="mobile-auth-section" class="mobile-auth">
+                <!-- Will be populated by JavaScript -->
             </div>
         </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="main-content">
+        <!-- Page content will be loaded here dynamically -->
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Modal Container -->
+    <div id="modal-container" class="modal-container"></div>
+
+    <!-- Core JavaScript -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/router.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/pages/home.js"></script>
+    <script src="/js/pages/auth.js"></script>
+    <script src="/js/pages/find-people.js"></script>
+    <script src="/js/pages/connections.js"></script>
+    <script src="/js/pages/chat.js"></script>
+    <script src="/js/pages/about.js"></script>
+    <script src="/js/pages/contact.js"></script>
+    <script src="/js/app.js"></script>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
         
-        <div class="container">
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">🚜</div>
-                    <h3>Farming</h3>
-                    <p>Connect with agricultural workers for seasonal and permanent farming positions</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏗️</div>
-                    <h3>Construction</h3>
-                    <p>Find skilled construction workers for your building and renovation projects</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧽</div>
-                    <h3>Cleaning</h3>
-                    <p>Hire reliable cleaning professionals for residential and commercial spaces</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3>General Labor</h3>
-                    <p>Access a wide range of general laborers for various tasks and projects</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Find People Page -->
-    <div id="find-people" class="page">
-        <div class="container">
-            <div class="content-section">
-                <h2>Find Workers</h2>
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <button class="btn btn-secondary" onclick="filterWorkers('all')" style="margin: 0.5rem;">All</button>
-                    <button class="btn btn-secondary" onclick="filterWorkers('farming')" style="margin: 0.5rem;">Farming</button>
-                    <button class="btn btn-secondary" onclick="filterWorkers('construction')" style="margin: 0.5rem;">Construction</button>
-                    <button class="btn btn-secondary" onclick="filterWorkers('cleaning')" style="margin: 0.5rem;">Cleaning</button>
-                    <button class="btn btn-secondary" onclick="filterWorkers('general')" style="margin: 0.5rem;">General</button>
-                </div>
-                <div class="people-grid" id="workers-grid">
-                    <!-- Workers will be populated by JavaScript -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Connections Page -->
-    <div id="connections" class="page">
-        <div class="container">
-            <div class="content-section">
-                <h2>Your Connections</h2>
-                <div class="people-grid" id="connections-grid">
-                    <div class="person-card">
-                        <div class="person-header">
-                            <div class="person-avatar">JS</div>
-                            <div class="person-info">
-                                <h3>John Smith</h3>
-                                <span class="person-category">Construction</span>
-                            </div>
-                        </div>
-                        <div class="person-details">
-                            <p><strong>Status:</strong> Currently working with you</p>
-                            <p><strong>Project:</strong> House renovation</p>
-                            <p><strong>Contact:</strong> john.smith@email.com</p>
-                        </div>
-                        <button class="contact-btn">Send Message</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Global Chat Page -->
-    <div id="chat" class="page">
-        <div class="container">
-            <div class="chat-container">
-                <div class="chat-header">
-                    <h3>Global Chat - Connect with Workers & Employers</h3>
-                </div>
-                <div class="chat-messages" id="chat-messages">
-                    <div class="message">
-                        <div class="message-header">Maria (Cleaner) - 2 mins ago</div>
-                        <div>Looking for part-time cleaning work in downtown area. Available weekends!</div>
-                    </div>
-                    <div class="message">
-                        <div class="message-header">BuildCorp (Employer) - 5 mins ago</div>
-                        <div>Need 3 construction workers for a 2-week project starting Monday. Good pay!</div>
-                    </div>
-                    <div class="message">
-                        <div class="message-header">Ahmed (General) - 8 mins ago</div>
-                        <div>Hi everyone! New to the platform. Excited to find work opportunities.</div>
-                    </div>
-                </div>
-                <div class="chat-input">
-                    <input type="text" id="chat-input" placeholder="Type your message...">
-                    <button onclick="sendMessage()">Send</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Us Page -->
-    <div id="about" class="page">
-        <div class="container">
-            <div class="content-section">
-                <h2>About Labor Connect</h2>
-                <p>Labor Connect is the leading platform connecting workers with employers across multiple industries. Founded with the mission to make labor hiring more efficient, transparent, and accessible for everyone.</p>
-                
-                <p>Our platform serves both workers seeking employment opportunities and employers looking for reliable, skilled labor. We specialize in four key areas: farming, construction, cleaning, and general labor services.</p>
-                
-                <p>With our advanced matching system, global chat functionality, and secure connection features, we're revolutionizing how people find work and hire workers. Join thousands of satisfied users who have found success through Labor Connect.</p>
-                
-                <h3 style="margin-top: 2rem; color: #667eea;">Our Mission</h3>
-                <p>To bridge the gap between skilled workers and employers while creating sustainable employment opportunities and fostering economic growth in communities worldwide.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact Us Page -->
-    <div id="contact" class="page">
-        <div class="container">
-            <div class="form-container">
-                <h2>Contact Us</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: #666;">Have questions? We're here to help!</p>
-                
-                <form onsubmit="handleContact(event)">
-                    <div class="form-group">
-                        <label for="contact-name">Full Name</label>
-                        <input type="text" id="contact-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">Email Address</label>
-                        <input type="email" id="contact-email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-subject">Subject</label>
-                        <select id="contact-subject" required>
-                            <option value="">Select a topic</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="technical">Technical Support</option>
-                            <option value="billing">Billing Question</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="feedback">Feedback</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message">Message</label>
-                        <textarea id="contact-message" rows="5" placeholder="Tell us how we can help you..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                </form>
-                
-                <div style="margin-top: 3rem; text-align: center; padding-top: 2rem; border-top: 2px solid #e1e1e1;">
-                    <h3 style="color: #667eea; margin-bottom: 1rem;">Other Ways to Reach Us</h3>
-                    <p><strong>Email:</strong> support@laborconnect.com</p>
-                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                    <p><strong>Hours:</strong> Monday - Friday, 9 AM - 6 PM EST</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-   <script src="script.js"></script>
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            App.init();
+        });
+    </script>
 </body>
 </html>
